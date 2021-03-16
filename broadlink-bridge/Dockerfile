@@ -1,6 +1,7 @@
-ARG BUILD_FROM
+#ARG BUILD_FROM
 
-FROM $BUILD_FROM AS build
+#FROM $BUILD_FROM AS build
+FROM homeassistant/amd64-base-python:latest
 RUN apk add git gcc musl-dev libffi-dev openssl-dev
 RUN git clone https://github.com/lbschenkel/broadlink-bridge.git -n /tmp/build \
     && cd /tmp/build \
