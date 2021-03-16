@@ -9,7 +9,8 @@ RUN git clone https://github.com/lbschenkel/broadlink-bridge.git -n /tmp/build \
     # install cryptography 3.3.x since newer ones need Rust:
     && pip wheel --wheel-dir=/tmp/wheels 'cryptography<3.4' .
 
-FROM $BUILD_FROM AS runtime
+#FROM $BUILD_FROM AS runtime
+FROM homeassistant/amd64-base-python:latest
 ENV LANG C.UTF-8
 COPY --from=build /tmp/wheels /tmp/wheels
 COPY run.sh /
