@@ -1,7 +1,7 @@
 #ARG BUILD_FROM
 
 #FROM $BUILD_FROM AS build
-FROM homeassistant/amd64-base-python:latest
+FROM homeassistant/amd64-base-python:latest AS build
 RUN apk add git gcc musl-dev libffi-dev openssl-dev
 RUN git clone https://github.com/lbschenkel/broadlink-bridge.git -n /tmp/build \
     && cd /tmp/build \
@@ -10,7 +10,7 @@ RUN git clone https://github.com/lbschenkel/broadlink-bridge.git -n /tmp/build \
     && pip wheel --wheel-dir=/tmp/wheels 'cryptography<3.4' .
 
 #FROM $BUILD_FROM AS runtime
-FROM homeassistant/amd64-base-python:latest
+FROM homeassistant/amd64-base-python:latest AS runtime
 ENV LANG C.UTF-8
 COPY --from=build /tmp/wheels /tmp/wheels
 COPY run.sh /
