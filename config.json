@@ -1,0 +1,26 @@
+{
+    "name": "Broadlink bridge",
+    "version": "0.1.7.1",
+    "slug": "broadlink_bridge",
+    "description": "Bridge to Broadlink devices supporting REST, MQTT and LIRC protocols",
+    "url": "https://github.com/kylinfedora/hass-addon-broadlink-bridge",
+    "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+    "startup": "services",
+    "boot": "auto",
+    "ports": {
+      "8780/tcp": 8780,
+      "8765/tcp": 8765
+    },
+    "ports_description": {
+      "8780/tcp": "REST protocol",
+      "8765/tcp": "LIRC protocol"
+    },
+    "map": ["config"],
+    "options": {
+      "config_file": ""
+    },
+    "schema": {
+      "config_file": "str?"
+    },
+     "image": "kylin/hass-addon-broadlink-bridge"
+  }
