@@ -6,7 +6,7 @@ RUN git clone https://github.com/lbschenkel/broadlink-bridge.git -n /tmp/build \
     && cd /tmp/build \
     && git checkout "master" \
     # install cryptography 3.3.x since newer ones need Rust:
-    && pip wheel --wheel-dir=/tmp/wheels 'cryptography<3.4' .
+    && pip wheel --wheel-dir=/tmp/wheels cryptography .
 
 FROM $BUILD_FROM AS runtime
 ENV LANG C.UTF-8
